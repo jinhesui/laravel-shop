@@ -22,6 +22,15 @@ class OrdersController extends Controller
         });
     }
 
+    public function show(Order $order)
+    {
+        return Admin::content(function (Content $content) use ($order) {
+            $content->header('查看订单');
+            // body 方法可以接受 Laravel 的视图作为参数
+            $content->body(view('admin.orders.show', ['order' => $order]));
+        });
+    }
+
     protected function grid()
     {
         return Admin::grid(Order::class, function (Grid $grid) {
