@@ -26,6 +26,11 @@ class Product extends Model
         return $this->hasMany(ProductSku::class);
     }
 
+    public function crowdfunding()
+    {
+        return $this->hasOne(CrowdfundingProduct::class);
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class);
